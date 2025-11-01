@@ -145,7 +145,7 @@ body {
   font-family: inherit;
   width: 100%;
   border-radius: 7px;
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
   border: 1px solid var(--darkerWhite);
   outline: none;
 }

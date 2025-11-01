@@ -23,7 +23,7 @@ const handleForm = (e) => {
 
 	checkIfEmpty(allInputs);
 	checkLength(nameInput, 3);
-	checkLength(numberInput, 16);
+	checkCardNumberFormat(numberInput);
 	checkIfCorrect(
 		nameInput,
 		nameRegexp,
@@ -51,14 +51,30 @@ const hideError = (input) => {
 };
 const checkIfEmpty = (input) => {
 	input.forEach((el) => {
-		if (el.value === "") {
-			showError(el, "Can't be blank");
-		} else {
-			hideError(el);
+		// Skip date inputs as they're handled separately
+		if (el !== dateMmInput && el !== dateYyInput) {
+			if (el.value === "") {
+				showError(el, "Can't be blank");
+			} else {
+				hideError(el);
+			}
 		}
 	});
+	// Handle date inputs together
 	if (dateMmInput.value === "" || dateYyInput.value === "") {
-		showError(dateMmInput, "Can't be blank");
+		const dateParent = dateMmInput.closest(".card-info-section__box");
+		const dateErrorTxt = dateParent.querySelector(".card-info-section-error");
+		dateMmInput.classList.add("error");
+		dateYyInput.classList.add("error");
+		dateErrorTxt.textContent = "Can't be blank";
+		dateErrorTxt.style.visibility = "visible";
+	} else {
+		const dateParent = dateMmInput.closest(".card-info-section__box");
+		const dateErrorTxt = dateParent.querySelector(".card-info-section-error");
+		// Only hide error if both are filled and no other validation error exists
+		if (!dateMmInput.classList.contains("error") && !dateYyInput.classList.contains("error")) {
+			dateErrorTxt.style.visibility = "hidden";
+		}
 	}
 };
 const checkLength = (input, minLength) => {
@@ -71,9 +87,38 @@ const checkLength = (input, minLength) => {
 		);
 	}
 };
+const checkCardNumberFormat = (input) => {
+	const cardNumberOnly = input.value.replace(/\s/g, "");
+	const isNumbersOnly = /^\d+$/.test(cardNumberOnly);
+	
+	if (input.value !== "" && !isNumbersOnly) {
+		showError(input, "Wrong format, numbers only");
+	} else if (input.value !== "" && cardNumberOnly.length !== 16) {
+		showError(input, "Card number must be 16 digits");
+	} else if (input.value !== "") {
+		hideError(input);
+	}
+};
 const checkIfCorrect = (input, regexp, msg) => {
 	if (!regexp.test(input.value) && input.value !== "") {
 		showError(input, msg);
+	} else if (input.value !== "" && regexp.test(input.value)) {
+		// Hide error if validation passes
+		if (input === dateMmInput || input === dateYyInput) {
+			// For date inputs, check both before hiding error
+			const dateParent = input.closest(".card-info-section__box");
+			const dateErrorTxt = dateParent.querySelector(".card-info-section-error");
+			if (dateMmInput.value !== "" && dateYyInput.value !== "" && 
+			    monthRegex.test(dateMmInput.value) && yearRegex.test(dateYyInput.value)) {
+				dateMmInput.classList.remove("error");
+				dateYyInput.classList.remove("error");
+				dateErrorTxt.style.visibility = "hidden";
+			} else if (input.value !== "" && regexp.test(input.value)) {
+				input.classList.remove("error");
+			}
+		} else {
+			hideError(input);
+		}
 	}
 };
 const showThanksBox = () => {
@@ -150,4 +195,4 @@ continueBtn.addEventListener("click", () => {
 	hideThanksBox();
 	clearAll(allInputs);
 });
-confirmBtn.addEventListener("click", handleForm);
+form.addEventListener("submit", handleForm);
