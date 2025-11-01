@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Interactive card details form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/script.js" defer></script>
+</head>
+
+<body>
+  <div class="body-bg"></div>
+  <header class="header">
+    <div class="header__content wrapper">
+      <div class="header__card header__card--back">
+        <img width="447" height="245" src="/images/bg-card-back.png" alt="Credit card back view">
+        <span class="header__cvc">000</span>
+      </div>
+      <div class="header__card header__card--front">
+        <img width="447" height="245" src="./images/bg-card-front.png" alt="Credit card front view">
+        <div class="header__card-data">
+          <p class="header__number">0000 0000 0000 0000</p>
+          <div class="header__card-data-bottom">
+            <p class="header__name">Jane Appleseed</p>
+            <p class="header__date"><span class="header__date-month">00</span>/<span class="header__date-year">00</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="card-info-section">
+      <form class="card-info-section__form wrapper">
+        <div class="card-info-section__box">
+          <label for="name" class="card-info-section__title">Cardholder name</label>
+          <div class="input-box">
+            <input type="text" id="name" placeholder="e.g. Jane Applesed">
+            <div class="input-border"></div>
+          </div>
+          <p class="card-info-section-error">error</p>
+        </div>
+        <div class="card-info-section__box">
+          <label for="number" class="card-info-section__title">Card number</label>
+          <div class="input-box">
+            <input type="text" id="number" placeholder="e.g. 1234 5678 9123 000" maxlength="19">
+            <div class="input-border"></div>
+          </div>
+          <p class="card-info-section-error">error</p>
+        </div>
+        <div class="card-info-section__container">
+          <div class="card-info-section__box">
+            <p class="card-info-section__title">Exp. Date (MM/YY)</p>
+            <div class="input-box input-box-mm">
+              <input class="date" type="number" data-id="date" placeholder="MM">
+              <div class="input-border"></div>
+            </div>
+            <div class="input-box input-box-yy">
+              <input class="date" type="number" data-id="date" placeholder="YY">
+              <div class="input-border"></div>
+            </div>
+            <p class="card-info-section-error">error</p>
+          </div>
+          <div class="card-info-section__box">
+            <label class="card-info-section__title" for="cvc">CVC</label>
+            <div class="input-box">
+              <input id="cvc" type="number" maxlength="3" placeholder="e.g. 123">
+              <div class="input-border"></div>
+            </div>
+            <p class="card-info-section-error">error</p>
+          </div>
+        </div>
+        <button type="submit" class="card-info-section__btn">Confirm</button>
+      </form>
+
+      <div class="thanks-box">
+        <img width="346" height="346" loading="lazy" src="/images/icon-complete.svg" alt="" class="thanks-box__img">
+        <h1 class="thanks-box__title">THANK YOU!</h1>
+        <p class="thanks-box__text">We've added your card details</p>
+        <button class="thanks-box__btn">Continue</button>
+      </div>
+    </section>
+  </main>
+  <!-- Challenge by Frontend Mentor - https://www.frontendmentor.io?ref=challenge" -->
+</body>
+
+</html>
