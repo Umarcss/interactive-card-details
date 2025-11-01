@@ -351,6 +351,7 @@ input.error {
     display: flex;
     align-items: center;
     width: 40%;
+    padding-left: 8em;
   }
   .header__card {
     width: 100%;
@@ -383,6 +384,9 @@ input.error {
     padding: 2em 3em;
     gap: 2em;
   }
+  .card-info-section__form {
+    padding: 2em 2em 2em 0;
+  }
   .card-info-section .input-box-mm,
   .card-info-section .input-box-yy {
     width: 48%;
@@ -407,6 +411,9 @@ input.error {
   }
 }
 @media (992px <= width) {
+  main {
+    padding-left: 10em;
+  }
   .header__card--front {
     left: 4em;
     top: 22%;
@@ -425,6 +432,9 @@ input.error {
   }
 }
 @media (1100px <= width) {
+  main {
+    padding-left: 12em;
+  }
   .header__card--front {
     left: 6em;
     top: 21%;
