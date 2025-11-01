@@ -33,17 +33,17 @@ A beautiful and interactive credit card details form built as a solution to the 
 ```
 interactive-card-details-form/
 │
-├── css/
+├── ./css/
 │   ├── style.css          # Compiled CSS
 │   └── style.css.map      # Source map
 │
-├── sass/
+├── ./sass/
 │   └── style.scss         # SASS source file
 │
-├── js/
+├── ./js/
 │   └── script.js          # JavaScript functionality
 │
-├── images/
+├── ./images/
 │   ├── bg-card-back.png   # Back card background
 │   ├── bg-card-front.png  # Front card background
 │   ├── bg-main-desktop.png # Desktop background
@@ -52,16 +52,16 @@ interactive-card-details-form/
 │   ├── icon-complete.svg   # Success icon
 │   └── favicon-32x32.png   # Favicon
 │
-├── design/
+├── ./design/
 │   ├── desktop-design.jpg
 │   ├── mobile-design.jpg
 │   ├── active-states.jpg
 │   ├── complete-state-desktop.jpg
 │   └── complete-state-mobile.jpg
 │
-├── index.html              # Main HTML file
-├── style-guide.md          # Design style guide
-└── README.md               # Project documentation
+├── ./index.html              # Main HTML file
+├── ./style-guide.md          # Design style guide
+└── ./README.md               # Project documentation
 ```
 
 ## 🎨 Design Specifications
@@ -105,7 +105,7 @@ cd interactive-card-details-frontend-mentor-challenge-main
 ```
 
 2. Open the project:
-   - Simply open `index.html` in your browser, or
+   - Simply open `./index.html` in your browser, or
    - Use a local server like Live Server in VS Code, or
    - Run a simple HTTP server:
    ```bash
@@ -120,7 +120,7 @@ cd interactive-card-details-frontend-mentor-challenge-main
 npm install -g sass
 
 # Watch for changes
-sass sass/style.scss css/style.css --watch
+sass ./sass/style.scss ./css/style.css --watch
 ```
 
 ## 💻 Usage
